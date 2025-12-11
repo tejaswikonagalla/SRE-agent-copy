@@ -1,9 +1,9 @@
 from fastapi import Header, HTTPException, status
 from fastapi.testclient import TestClient
 
-from ..dependencies import get_database
-from ..main import app
-from ..database import SessionLocal  # Import SessionLocal from the correct module
+from app.dependencies import get_database
+from app.main import app
+from app.database import SessionLocal  # Import SessionLocal from the correct module
 
 
 def temp_db(f):

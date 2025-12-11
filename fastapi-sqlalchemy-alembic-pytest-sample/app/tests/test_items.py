@@ -4,7 +4,7 @@ from app.tests.conftest import client, temp_db
 
 
 @temp_db
-def test_items():
+def test_items(client):
     response = client.get("/items")
 
     assert response.status_code == status.HTTP_200_OK
@@ -13,7 +13,7 @@ def test_items():
     assert len(json) == 3
 
 @temp_db
-def test_item():
+def test_item(client):
     item_id = "e7d35224-0f51-a62a-25af-4d5c930d9085"
     response = client.get(f"/items/{item_id}")
 

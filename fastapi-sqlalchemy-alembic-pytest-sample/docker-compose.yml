@@ -25,6 +25,9 @@ services:
     env_file:
       - docker/.env
     environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: test_db
       TZ: UTC
     ports:
       - "5432:5432"

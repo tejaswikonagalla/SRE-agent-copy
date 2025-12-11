@@ -4,5 +4,5 @@
 import sys
 import os
 
-# Add the app directory to the system path to ensure proper module resolution
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# Add the parent directory to the system path to ensure proper module resolution
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

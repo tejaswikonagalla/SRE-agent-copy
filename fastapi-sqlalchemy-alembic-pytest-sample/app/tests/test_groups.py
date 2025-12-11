@@ -4,7 +4,7 @@ from app.tests.conftest import client, temp_db
 
 
 @temp_db
-def test_groups():
+def test_groups(client):
     response = client.get("/groups")
 
     assert response.status_code == status.HTTP_200_OK
@@ -13,7 +13,7 @@ def test_groups():
     assert len(json) == 2
 
 @temp_db
-def test_group():
+def test_group(client):
     group_id = "218587ed-d548-bd06-d278-43583021c1a9"
     response = client.get(f"/groups/{group_id}")
 
@@ -24,7 +24,7 @@ def test_group():
     assert json["description"] == "Group2 description"
 
 @temp_db
-def test_group_items_1():
+def test_group_items_1(client):
     group_id = "7d60e1d4-a6af-fc52-6355-67c3094479ab"
     response = client.get(f"/groups/{group_id}/items")
 
@@ -34,7 +34,7 @@ def test_group_items_1():
     assert len(json) == 2
 
 @temp_db
-def test_group_items_2():
+def test_group_items_2(client):
     group_id = "218587ed-d548-bd06-d278-43583021c1a9"
     response = client.get(f"/groups/{group_id}/items")
 

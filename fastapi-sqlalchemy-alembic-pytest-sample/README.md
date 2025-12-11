@@ -28,7 +28,7 @@ If you encounter a `ModuleNotFoundError`, ensure that your Python environment is
 pip install -r requirements.txt
 ```
 
-Additionally, verify that the module paths in your imports are correct. For example, ensure that the `app.session` module exists and is correctly named. If the module is located in a different directory, adjust the import statements accordingly.
+Additionally, verify that the module paths in your imports are correct. For example, ensure that the `app.session` module exists and is correctly named. If the module is located in a different directory, adjust the import statements accordingly. You can also check if the `PYTHONPATH` environment variable is set correctly to include the root of your project.
 
 If you want to quickly verify the operation with Docker Compose, please refer to the following.
 
