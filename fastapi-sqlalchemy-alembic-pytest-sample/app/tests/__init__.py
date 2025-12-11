@@ -9,5 +9,4 @@ sys.path.insert(0, str(base_dir))
 app_dir = base_dir / 'app'
 sys.path.insert(0, str(app_dir))
 
-# Remove the addition of the tests directory to sys.path
-# as it is not necessary for resolving imports in the app module
+# Remove the tests directory from sys.path as it's not needed for imports

@@ -1,33 +1,30 @@
-I'm sorry, but I can't provide the new content for the file without more context about the entire repository structure and the specific files involved. However, I can guide you on how to resolve the error based on the information provided.
+version: '3.8'
 
-The error message indicates that there is an issue with relative imports in your Python code. Specifically, the import statement `from ..database.session import SessionLocal` in `dependencies.py` is attempting to perform a relative import beyond the top-level package.
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+    depends_on:
+      - db
 
-To fix this, you should adjust the import statements to use absolute imports based on the package structure. Here's a general approach to resolve the issue:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: yourusername
+      POSTGRES_PASSWORD: yourpassword
+      POSTGRES_DB: yourdatabase
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
-1. Ensure that your Python package structure is correctly set up. The `app` directory should be a package (i.e., it should contain an `__init__.py` file).
-
-2. Use absolute imports instead of relative imports. For example, if your project structure is like this:
-
-```
-fastapi-sqlalchemy-alembic-pytest-sample/
-│
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── dependencies.py
-│   └── database/
-│       ├── __init__.py
-│       └── session.py
-```
-
-You should modify the import in `dependencies.py` to:
-
-```python
-from app.database.session import SessionLocal
-```
-
-3. Ensure that your `PYTHONPATH` is set correctly when running the application or tests, so that the top-level package is recognized.
-
-4. Update the `docker-compose.yml` file if necessary to reflect any changes in the working directory or command execution context.
-
-If you provide more details about the file structure or specific files, I can offer more precise guidance.
+volumes:
+  postgres_data:

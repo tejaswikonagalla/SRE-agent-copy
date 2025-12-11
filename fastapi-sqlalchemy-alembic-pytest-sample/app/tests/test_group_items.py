@@ -23,5 +23,5 @@ def test_group_item():
     assert response.status_code == status.HTTP_200_OK
 
     json = response.json()
-    assert json["group_id"] == "7d60e1d4-a6af-fc52-6355-67c3094479ab"
+    assert json["group_id"] == group_id
     assert json["item_id"] == "9ab921a1-d177-7691-0bb4-b66ef823d9b4"
