@@ -1,6 +1,6 @@
 from fastapi import status
 
-from app.tests.conftest import client, temp_db
+from .conftest import client, temp_db
 
 
 @temp_db

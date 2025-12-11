@@ -8,6 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database, drop_database
 
 from app.tests.seed import items, groups, group_items
+import alembic.command  # Added import for alembic.command
 
 
 def migrate_in_memory(migrations_path, alembic_ini_path='alembic.ini', connection=None, revision="head"):
