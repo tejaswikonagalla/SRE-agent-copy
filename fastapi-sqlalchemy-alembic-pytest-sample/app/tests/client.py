@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 
 from app.dependencies import get_database
 from app.main import app
-from app.database.session import SessionLocal  # Corrected import path
+from app.database.session import SessionLocal
 
 
 def temp_db(f):
@@ -16,8 +16,10 @@ def temp_db(f):
                 db.close()
 
         app.dependency_overrides[get_database] = override_get_db
-        f(*args, **kwargs)
-        app.dependency_overrides[get_database] = get_database
+        try:
+            f(*args, **kwargs)
+        finally:
+            app.dependency_overrides[get_database] = get_database
 
     return func
 

@@ -15,6 +15,7 @@ services:
       - PYTHONPATH=/app
     depends_on:
       - db
+      - alembic
 
   db:
     image: postgres:13
@@ -25,6 +26,26 @@ services:
       POSTGRES_DB: yourdatabase
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  alembic:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: alembic upgrade head
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      - PYTHONPATH=/app
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+networks:
+  app-network:
 
 volumes:
   postgres_data:

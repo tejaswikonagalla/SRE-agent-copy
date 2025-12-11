@@ -8,10 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database, drop_database
 
 from app.tests.seed import items, groups, group_items
-import alembic.command  # Added import for alembic.command
-
-# Ensure the app.tests.seed module exists and is correctly structured
-# If not, create the module with the necessary lists: items, groups, group_items
+import alembic.command
 
 def migrate_in_memory(migrations_path, alembic_ini_path='alembic.ini', connection=None, revision="head"):
     config = alembic.config.Config(alembic_ini_path)
@@ -24,7 +21,7 @@ def migrate_in_memory(migrations_path, alembic_ini_path='alembic.ini', connectio
 @pytest.fixture(scope="session", autouse=True)
 def session_local():
     test_sqlalchemy_database_url = os.environ.get('DATABASE_URL', 'sqlite:///:memory:')
-    engine = create_engine(test_sqlalchemy_database_url)
+    engine = create_engine(test_sqlalchemy_database_url, connect_args={"check_same_thread": False})
 
     if database_exists(engine.url):
         drop_database(engine.url)
@@ -32,7 +29,7 @@ def session_local():
     create_database(engine.url)
 
     with engine.begin() as connection:
-        migrate_in_memory("app/migration", 'alembic.ini', connection)
+        migrate_in_memory("app/migrations", 'alembic.ini', connection)
 
     Base = declarative_base()
     Base.metadata.create_all(engine)

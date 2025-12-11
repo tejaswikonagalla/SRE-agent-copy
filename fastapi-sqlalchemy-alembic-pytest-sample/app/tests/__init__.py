@@ -9,4 +9,13 @@ sys.path.insert(0, str(base_dir))
 app_dir = base_dir / 'app'
 sys.path.insert(0, str(app_dir))
 
-# Remove the tests directory from sys.path as it's not needed for imports
+# Ensure the tests directory is not in sys.path to avoid import conflicts
+tests_dir = base_dir / 'tests'
+if str(tests_dir) in sys.path:
+    sys.path.remove(str(tests_dir))
+
+# Ensure the database URL or any other environment variables are set correctly
+import os
+
+# Example: Set a default database URL if not already set
+os.environ.setdefault('DATABASE_URL', 'sqlite:///test.db')

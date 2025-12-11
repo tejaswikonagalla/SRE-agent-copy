@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Float
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
-# Assuming the ModelBase is supposed to be in the same directory, correcting the import path
+# Correcting the import path for ModelBase
 from app.models.model_base import ModelBase
 
 class Book(ModelBase):
