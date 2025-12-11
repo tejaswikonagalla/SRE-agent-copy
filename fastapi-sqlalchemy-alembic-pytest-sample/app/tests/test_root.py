@@ -1,5 +1,5 @@
 from fastapi import status
-from app.tests.client import client
+from app.client import client
 
 
 def test_root():

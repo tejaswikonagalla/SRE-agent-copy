@@ -21,7 +21,7 @@ def migrate_in_memory(migrations_path, alembic_ini_path='alembic.ini', connectio
 
 @pytest.fixture(scope="session", autouse=True)
 def session_local():
-    test_sqlalchemy_database_url = os.environ['DATABASE_URL']
+    test_sqlalchemy_database_url = os.environ.get('DATABASE_URL', 'sqlite:///:memory:')
     engine = create_engine(test_sqlalchemy_database_url)
 
     if database_exists(test_sqlalchemy_database_url):

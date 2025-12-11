@@ -1,7 +1,10 @@
 from fastapi import status
+from fastapi.testclient import TestClient
 
-from .conftest import client, temp_db
+from ..main import app
+from .conftest import temp_db
 
+client = TestClient(app)
 
 @temp_db
 def test_group_items():
