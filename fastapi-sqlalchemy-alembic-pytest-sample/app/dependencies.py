@@ -1,5 +1,5 @@
 from typing import Generator
-from .database import SessionLocal
+from app.database.session import SessionLocal
 
 
 def get_database() -> Generator:

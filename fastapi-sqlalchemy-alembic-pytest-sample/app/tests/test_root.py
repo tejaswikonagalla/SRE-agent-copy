@@ -1,5 +1,5 @@
 from fastapi import status
-from app.tests.client import client
+from ..client import client
 
 
 def test_root():
@@ -7,5 +7,5 @@ def test_root():
 
     assert response.status_code == status.HTTP_200_OK
 
-    json = response.json()
-    assert json == {"ping": "pong"}
+    json_response = response.json()
+    assert json_response == {"ping": "pong"}

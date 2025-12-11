@@ -12,7 +12,8 @@ services:
       - docker/.env
     command: ["pytest", "-s"]
     volumes:
-      - .:/app
+      - .:/workspace/fastapi-sqlalchemy-alembic-pytest-sample
+    working_dir: /workspace/fastapi-sqlalchemy-alembic-pytest-sample
   waitfordb:
     image: dadarek/wait-for-dependencies
     depends_on:
