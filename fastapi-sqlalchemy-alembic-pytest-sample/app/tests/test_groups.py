@@ -1,7 +1,5 @@
 from fastapi import status
-
 from app.tests.conftest import client, temp_db
-
 
 @temp_db
 def test_groups(client):

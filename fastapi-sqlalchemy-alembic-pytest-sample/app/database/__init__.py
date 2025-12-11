@@ -1,1 +1,1 @@
-from app.database.session import SessionLocal, engine
+from .session import SessionLocal, engine

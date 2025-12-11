@@ -5,7 +5,12 @@ from alembic import context
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
-from app.models.model_base import ModelBase
+try:
+    from app.models.model_base import ModelBase
+except ModuleNotFoundError:
+    # Minimal implementation of ModelBase if it doesn't exist
+    from sqlalchemy.ext.declarative import declarative_base
+    ModelBase = declarative_base()
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

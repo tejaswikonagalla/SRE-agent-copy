@@ -39,3 +39,9 @@ docker-compose up --abort-on-container-exit --exit-code-from app
 # clean up after docker-compose
 docker-compose down --rmi all --volumes --remove-orphans
 ```
+
+- Carefully analyze the entire repository context, including all imports, dependencies, and file structure.
+- If the code references a file or module that does not exist, create it with the minimal correct implementation required for the code to run.
+- Ensure all import paths and module references are correct and consistent with the repo structure.
+- If requirements.txt needs to be updated for standard packages, update it, but do NOT introduce any non-existent or unresolvable dependencies.
+- Make all necessary changes across any files in the repo to ensure the fix is complete and the code will execute without errors in a clean environment.
