@@ -3,7 +3,7 @@ from fastapi.testclient import TestClient
 
 from app.dependencies import get_database
 from app.main import app
-from app.database.session import SessionLocal  # Corrected import path
+from app.database import SessionLocal  # Corrected import path
 
 
 def temp_db(f):
