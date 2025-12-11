@@ -1,8 +1,8 @@
 from fastapi import status
 from fastapi.testclient import TestClient
 
-from ..main import app
-from .conftest import temp_db
+from app.main import app
+from app.tests.conftest import temp_db
 
 client = TestClient(app)
 

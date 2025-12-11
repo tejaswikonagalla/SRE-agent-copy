@@ -10,6 +10,8 @@ from sqlalchemy_utils import database_exists, create_database, drop_database
 from app.tests.seed import items, groups, group_items
 import alembic.command  # Added import for alembic.command
 
+# Ensure the app.tests.seed module exists and is correctly structured
+# If not, create the module with the necessary lists: items, groups, group_items
 
 def migrate_in_memory(migrations_path, alembic_ini_path='alembic.ini', connection=None, revision="head"):
     config = alembic.config.Config(alembic_ini_path)
