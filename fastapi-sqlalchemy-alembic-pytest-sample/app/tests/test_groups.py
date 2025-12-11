@@ -18,8 +18,8 @@ def test_group(client):
     assert response.status_code == status.HTTP_200_OK
 
     json = response.json()
-    assert json["name"] == "Group2"
-    assert json["description"] == "Group2 description"
+    assert json["name"] == "Group1"
+    assert json["description"] == "Group1 description"
 
 @temp_db
 def test_group_items_1(client):

@@ -2,12 +2,13 @@ from fastapi import status
 from fastapi.testclient import TestClient
 
 from main import app
-from tests.conftest import temp_db
+from tests.conftest import temp_db, setup_test_data
 
 client = TestClient(app)
 
 @temp_db
 def test_group_items():
+    setup_test_data()  # Ensure test data is set up before the test
     response = client.get("/group_items")
 
     assert response.status_code == status.HTTP_200_OK
@@ -17,6 +18,7 @@ def test_group_items():
 
 @temp_db
 def test_group_item():
+    setup_test_data()  # Ensure test data is set up before the test
     group_id = "7d60e1d4-a6af-fc52-6355-67c3094479ab"
     response = client.get(f"/group_items/{group_id}")
 

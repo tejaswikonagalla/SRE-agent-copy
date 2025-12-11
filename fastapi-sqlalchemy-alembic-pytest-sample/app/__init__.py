@@ -1,11 +1,8 @@
 # Marks the app directory as a Python package.
 # Ensure the package is recognized by adding an empty __init__.py file.
 
-import sys
-import os
+# The original sys.path modifications are not necessary for typical package resolution
+# when using a proper package structure and relative imports.
 
-# Add the parent directory to the system path to ensure proper module resolution
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-# Ensure the app directory is also in the system path for module resolution
-sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+# If there are specific import issues, they should be resolved by ensuring
+# the correct package structure and using relative imports where appropriate.
