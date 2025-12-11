@@ -19,7 +19,7 @@ def migrate_in_memory(migrations_path, alembic_ini_path='alembic.ini', connectio
 
 
 @pytest.fixture(scope="session", autouse=True)
-def SessionLocal():
+def session_local():
     test_sqlalchemy_database_url = os.environ['DATABASE_URL']
     engine = create_engine(test_sqlalchemy_database_url)
 
@@ -29,7 +29,7 @@ def SessionLocal():
     create_database(test_sqlalchemy_database_url)
 
     with engine.begin() as connection:
-        migrate_in_memory("migration", 'alembic.ini', connection)
+        migrate_in_memory("app/migration", 'alembic.ini', connection)
 
     Base = declarative_base()
     Base.metadata.create_all(engine)

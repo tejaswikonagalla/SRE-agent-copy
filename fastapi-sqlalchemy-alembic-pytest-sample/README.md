@@ -22,6 +22,14 @@ ALTER ROLE fastapi_pytest CREATEDB;
 CREATE DATABASE fastapi_pytest_development;
 ```
 
+If you encounter a `ModuleNotFoundError`, ensure that your Python environment is activated and all dependencies are installed. You can install the required packages using:
+
+```bash
+pip install -r requirements.txt
+```
+
+Additionally, verify that the module paths in your imports are correct. For example, ensure that the `app.session` module exists and is correctly named. If the module is located in a different directory, adjust the import statements accordingly.
+
 If you want to quickly verify the operation with Docker Compose, please refer to the following.
 
 ```bash

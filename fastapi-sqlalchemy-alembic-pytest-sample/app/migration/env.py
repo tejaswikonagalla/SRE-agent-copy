@@ -30,7 +30,7 @@ target_metadata = ModelBase.metadata
 
 
 # replace 'sqlalchemy.url' from alembic.ini with DATABASE_URL from .env
-config.set_main_option('sqlalchemy.url', os.environ["DATABASE_URL"])
+config.set_main_option('sqlalchemy.url', os.getenv("DATABASE_URL"))
 
 
 def run_migrations_offline():

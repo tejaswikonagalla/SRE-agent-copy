@@ -1,12 +1,13 @@
 from fastapi import Header, HTTPException, status
 from fastapi.testclient import TestClient
 
-from app.dependencies import get_database
-from app.main import app
+from ..dependencies import get_database
+from ..main import app
+from ..database import SessionLocal  # Import SessionLocal from the correct module
 
 
 def temp_db(f):
-    def func(SessionLocal, *args, **kwargs):
+    def func(*args, **kwargs):
         def override_get_db():
             db = SessionLocal()
             try:
