@@ -1,6 +1,8 @@
 from fastapi import status
-from app.client import client
+from main import app
+from fastapi.testclient import TestClient
 
+client = TestClient(app)
 
 def test_root():
     response = client.get("/")

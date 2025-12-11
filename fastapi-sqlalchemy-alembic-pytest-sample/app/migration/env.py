@@ -5,8 +5,9 @@ from alembic import context
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
+# Adjusted import path to match the likely correct structure
 try:
-    from app.models.model_base import ModelBase
+    from app.models import ModelBase
 except ModuleNotFoundError:
     # Minimal implementation of ModelBase if it doesn't exist
     from sqlalchemy.ext.declarative import declarative_base

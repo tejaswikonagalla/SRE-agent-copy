@@ -1,11 +1,11 @@
-psycopg2-binary
 python-dotenv>=1.0.0
+requests>=2.25.0
+openai>=1.0.0
 PyGithub>=2.0.0
+e2b
+psycopg2-binary
 SQLAlchemy
+PyPDF2
 fastapi
 alembic
-PyPDF2
-e2b
 gitpython>=3.1.0
-openai>=1.0.0
-requests>=2.25.0
