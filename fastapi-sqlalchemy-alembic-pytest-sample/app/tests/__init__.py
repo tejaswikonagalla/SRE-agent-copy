@@ -9,3 +9,7 @@ sys.path.insert(0, str(app_dir))
 # Add the tests directory to the sys.path to ensure test modules can be found
 tests_dir = base_dir / 'tests'
 sys.path.insert(0, str(tests_dir))
+
+# Add the migrations directory to the sys.path to ensure migration modules can be found
+migrations_dir = base_dir / 'migrations'
+sys.path.insert(0, str(migrations_dir))

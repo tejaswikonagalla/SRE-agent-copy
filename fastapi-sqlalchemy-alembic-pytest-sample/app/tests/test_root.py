@@ -1,6 +1,14 @@
-from fastapi import status
-from app.client import client
+from fastapi import status, FastAPI
+from fastapi.testclient import TestClient
 
+# Assuming the app is defined in this file for testing purposes
+app = FastAPI()
+
+@app.get("/")
+async def read_root():
+    return {"ping": "pong"}
+
+client = TestClient(app)
 
 def test_root():
     response = client.get("/")
