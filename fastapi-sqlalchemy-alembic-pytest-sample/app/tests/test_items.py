@@ -1,5 +1,11 @@
 from fastapi import status
 from app.tests.conftest import client, temp_db
+from app.main import app
+from app.database import Base, engine
+from app.models import Item
+
+# Ensure the database schema is created before running tests
+Base.metadata.create_all(bind=engine)
 
 @temp_db
 def test_items(client):

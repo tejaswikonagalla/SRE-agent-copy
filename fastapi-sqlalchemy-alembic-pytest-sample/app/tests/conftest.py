@@ -32,7 +32,7 @@ def session_local():
     create_database(engine.url)
 
     with engine.begin() as connection:
-        migrate_in_memory("app/migration", 'alembic.ini', connection)
+        migrate_in_memory("app/migrations", 'alembic.ini', connection)  # Corrected path to "app/migrations"
 
     Base = declarative_base()
     Base.metadata.create_all(engine)

@@ -19,7 +19,8 @@ config = context.config
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
-fileConfig(config.config_file_name)
+if config.config_file_name is not None:
+    fileConfig(config.config_file_name)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
@@ -32,9 +33,10 @@ target_metadata = ModelBase.metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
-
 # replace 'sqlalchemy.url' from alembic.ini with DATABASE_URL from .env
-config.set_main_option('sqlalchemy.url', os.getenv("DATABASE_URL"))
+database_url = os.getenv("DATABASE_URL")
+if database_url is not None:
+    config.set_main_option('sqlalchemy.url', database_url)
 
 
 def run_migrations_offline():
