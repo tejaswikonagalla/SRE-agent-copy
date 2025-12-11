@@ -15,6 +15,7 @@ services:
       - PYTHONPATH=/app
     depends_on:
       - db
+      - alembic
 
   db:
     image: postgres:13
@@ -25,6 +26,15 @@ services:
       POSTGRES_DB: yourdatabase
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  alembic:
+    image: python:3.9
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: bash -c "pip install -r requirements.txt && alembic upgrade head"
+    depends_on:
+      - db
 
 volumes:
   postgres_data:

@@ -7,7 +7,7 @@ from tests.conftest import temp_db
 client = TestClient(app)
 
 @temp_db
-def test_group_items():
+def test_group_items(temp_db_session):
     response = client.get("/group_items")
 
     assert response.status_code == status.HTTP_200_OK
@@ -16,7 +16,7 @@ def test_group_items():
     assert len(json) == 3
 
 @temp_db
-def test_group_item():
+def test_group_item(temp_db_session):
     group_id = "7d60e1d4-a6af-fc52-6355-67c3094479ab"
     response = client.get(f"/group_items/{group_id}")
 

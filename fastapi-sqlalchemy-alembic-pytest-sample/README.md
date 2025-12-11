@@ -1,14 +1,63 @@
-I'm sorry for the confusion, but the error you provided is related to a Python import issue, not the README.md file. To fix the error, we need to adjust the import statements in the Python files. Let's address the error in the `dependencies.py` file by using absolute imports instead of relative imports. Here's the updated content for `dependencies.py`:
+# FastAPI SQLAlchemy Alembic Pytest Sample
 
-```python
-from app.database.session import SessionLocal
+This repository is a sample project demonstrating how to use FastAPI with SQLAlchemy, Alembic, and Pytest.
 
-def get_database():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-```
+## Project Structure
 
-If there are any other files with similar relative import issues, they should be updated similarly to use absolute imports based on the project structure. If you need further assistance with other files, please let me know.
+- `app/`: Contains the main application code.
+  - `main.py`: The entry point for the FastAPI application.
+  - `database/`: Contains database-related modules.
+    - `session.py`: Defines the SQLAlchemy session.
+  - `models/`: Contains SQLAlchemy models.
+  - `routers/`: Contains API route definitions.
+  - `dependencies.py`: Contains dependency functions for the application.
+- `alembic/`: Contains Alembic migration scripts.
+- `tests/`: Contains test cases for the application.
+
+## Setup
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/yourusername/fastapi-sqlalchemy-alembic-pytest-sample.git
+   cd fastapi-sqlalchemy-alembic-pytest-sample
+   ```
+
+2. **Create and activate a virtual environment:**
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
+
+3. **Install dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up the database:**
+
+   - Update the database URL in `app/database/session.py`.
+   - Run Alembic migrations to set up the database schema:
+
+     ```bash
+     alembic upgrade head
+     ```
+
+5. **Run the application:**
+
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+6. **Run tests:**
+
+   ```bash
+   pytest
+   ```
+
+## Notes
+
+- Ensure that all import statements in the codebase use absolute imports based on the project structure.
+- If you encounter any issues with migrations, check the Alembic configuration and migration scripts.

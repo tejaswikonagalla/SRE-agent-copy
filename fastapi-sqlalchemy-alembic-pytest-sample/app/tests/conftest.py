@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database, drop_database
 
 from app.tests.seed import items, groups, group_items
-import alembic.command  # Added import for alembic.command
+import alembic.command
 
 # Ensure the app.tests.seed module exists and is correctly structured
 # If not, create the module with the necessary lists: items, groups, group_items
@@ -32,7 +32,7 @@ def session_local():
     create_database(engine.url)
 
     with engine.begin() as connection:
-        migrate_in_memory("app/migration", 'alembic.ini', connection)
+        migrate_in_memory("app/migrations", 'alembic.ini', connection)  # Corrected migrations path
 
     Base = declarative_base()
     Base.metadata.create_all(engine)
