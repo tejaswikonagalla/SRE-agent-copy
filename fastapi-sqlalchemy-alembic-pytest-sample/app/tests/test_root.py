@@ -11,3 +11,6 @@ def test_root():
 
     json_response = response.json()
     assert json_response == {"ping": "pong"}
+```
+
+Note: Ensure that the `app/main.py` file exists and contains a FastAPI application instance named `app`. If it doesn't exist, you will need to create it with the appropriate FastAPI setup.

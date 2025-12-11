@@ -3,7 +3,7 @@ from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
 # Assuming the ModelBase is supposed to be in the same directory, correcting the import path
-from app.models.model_base import ModelBase
+from .model_base import ModelBase
 
 class Book(ModelBase):
     __tablename__ = "books"

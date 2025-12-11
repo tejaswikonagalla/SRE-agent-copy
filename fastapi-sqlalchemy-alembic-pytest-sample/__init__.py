@@ -7,4 +7,4 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Ensure the 'app' directory is also added to the Python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'fastapi-sqlalchemy-alembic-pytest-sample', 'app')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), 'app')))

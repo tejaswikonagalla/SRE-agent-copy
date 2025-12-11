@@ -4,5 +4,5 @@
 import sys
 import os
 
-# Add the grandparent directory to the system path to ensure proper module resolution
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+# Add the parent directory to the system path to ensure proper module resolution
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
